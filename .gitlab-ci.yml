@@ -1,0 +1,91 @@
+variables:
+  WEB_URL: "http://13.232.132.196/"
+DeployJob:
+    only:
+    - dev
+    script:
+#    - "mkdir -p /tmp/$CI_PROJECT_NAMESPACE/$CI_COMMIT_REF_NAME"
+#    - "if [ /var/www/html/$CI_PROJECT_NAMESPACE/$CI_COMMIT_REF_NAME/.env ]; then"
+#    - "mv /var/www/html/$CI_PROJECT_NAMESPACE/$CI_COMMIT_REF_NAME/.env /tmp/$CI_PROJECT_NAMESPACE/$CI_COMMIT_REF_NAME/"
+#    - "fi"
+#    - "if [ -d /var/www/html/$CI_PROJECT_NAMESPACE/$CI_COMMIT_REF_NAME/config ]; then"
+#    - "mv /var/www/html/$CI_PROJECT_NAMESPACE/$CI_COMMIT_REF_NAME/config /tmp/$CI_PROJECT_NAMESPACE/$CI_COMMIT_REF_NAME/"
+#    - "fi"
+#    - "if [ -d /var/www/html/$CI_PROJECT_NAMESPACE/$CI_COMMIT_REF_NAME ]; then"
+#    - "rm -rf /var/www/html/$CI_PROJECT_NAMESPACE/$CI_COMMIT_REF_NAME"
+#    - "fi"
+#    - "if [ ! -d /var/www/html/$CI_PROJECT_NAMESPACE/$CI_COMMIT_REF_NAME ]; then"
+#    - "mkdir -p /var/www/html/$CI_PROJECT_NAMESPACE/$CI_COMMIT_REF_NAME"
+#    - "fi"
+#    - "cd /var/www/html/$CI_PROJECT_NAMESPACE/$CI_COMMIT_REF_NAME"
+#    - "git init"
+#    - "git config remote.origin.url https://gitlab.com/alpha_solution/ucuzaGetdiProject.git"
+#    - "git pull origin $CI_COMMIT_REF_NAME"
+#    - "composer install"
+#    - "php artisan cache:clear"
+#    - "php artisan route:clear"
+#    - "chmod -R 777 /var/www/html/$CI_PROJECT_NAMESPACE/$CI_COMMIT_REF_NAME/storage"
+#    - "rm -rf /var/www/html/$CI_PROJECT_NAMESPACE/$CI_COMMIT_REF_NAME/config"
+#    - "mv -f /tmp/$CI_PROJECT_NAMESPACE/$CI_COMMIT_REF_NAME/.env /var/www/html/$CI_PROJECT_NAMESPACE/$CI_COMMIT_REF_NAME/"
+#    - "mv -f /tmp/$CI_PROJECT_NAMESPACE/$CI_COMMIT_REF_NAME/config /var/www/html/$CI_PROJECT_NAMESPACE/$CI_COMMIT_REF_NAME/"
+#    - "cd /var/www/html/$CI_PROJECT_NAMESPACE/$CI_COMMIT_REF_NAME/public"
+    - "cd /var/www/html"
+    - "ls -l"
+    stage: deploy
+    tags:
+    - alfa_ucuzagetdi
+#DeployJob:
+#  only:
+#  - master
+#  script:
+#  - "git clone https://gitlab.com/alpha_solution/ucuzaGetdiProject.git"
+#  - "sudo mv ucuzaGetdiProject /var/www/html/"
+#  - "cd /var/www/html/ucuzagetdiproject"
+#  - "composer install"
+#  - "php artisan key:generate"
+#  - "php artisan migrate:fresh --seed"
+#  - "sudo cp .env.example .env"
+#  stage: deploy
+#  tags:
+#  - alfa_ucuzagetdi
+##ComposerJob:
+##  only:
+##  - master
+##  script:
+##  - "if [ -f /var/www/html/ucuzagetdiproject/.env.example ]; then"
+##  - "sudo cp /var/www/html/ucuzagetdiproject/.env.example /var/www/html/ucuzagetdiproject/.env"
+##  - "fi"
+##  - "cd /var/www/html/ucuzagetdiproject"
+##  - "composer install"
+##  - "php artisan key:generate"
+##  - "php artisan migrate:fresh --seed"
+##  stage: composerstg
+##  tags:
+##  - alfa_ucuzagetdi
+##ChmodJob:
+##  only:
+##  - master
+##  script:
+##  - "sudo chgrp apache -R /var/www/html/ucuzagetdiproject/storage"
+##  stage: chmodstg
+##  tags:
+##  - alfa_ucuzagetdi
+##ServerJob:
+##  only:
+##  - master
+##  script:
+##  - if curl -Is '$WEB_URL' | grep 200
+##  - then
+##  - echo "Web server ok"
+##  - else
+##  - echo "Web server not ok"
+##  - exit
+##  - fi
+##  stage: srvtest
+##  tags:
+##  - alfa_ucuzagetdi
+stages:
+- deploy
+#- composerstg
+#- chmodstg
+#- srvtest
